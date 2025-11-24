@@ -452,6 +452,23 @@ fieldset {
   color: crimson;
 }
 
+#aboutFilm img {
+  max-width: 100%;     /* don’t let it overflow the carousel width */
+  height: auto;        /* scale proportionally */
+  max-height: 300px;   /* cap the height */
+  margin: auto;
+  display: block;
+  object-fit: contain; /* ensures the full image is visible */
+}
+
+#aboutNGO img {
+  max-width: 100%;     /* don’t let it overflow the carousel width */
+  height: auto;        /* scale proportionally */
+  max-height: 300px;   /* cap the height */
+  margin: auto;
+  display: block;
+  object-fit: contain; /* ensures the full image is visible */
+}
 
     </style>
   <!-- Bootstrap CSS CDN -->
@@ -574,7 +591,7 @@ Homophobia and transphobia are colonial constructs. Framing LGBTQ+ identities as
     <div class="container text-center">
     <p class="mb-2"><b>BIPOC Organizations Around the World Fighting Against Homophobia and Transphobia</b></p>
     <!-- Slideshow Gallery -->
-    <div id="aboutGallery" class="carousel slide" data-bs-ride="carousel">
+    <div id="aboutNGO" class="carousel slide small-carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <a href="https://www.arcenciel-international.be/world-resources/rainbow-afghanistan" target="_blank">
@@ -587,11 +604,11 @@ Homophobia and transphobia are colonial constructs. Framing LGBTQ+ identities as
           </a>
         </div>
       <!-- Controls -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#aboutGallery" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#aboutNGO" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#aboutGallery" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#aboutNGO" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
