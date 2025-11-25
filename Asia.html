@@ -13,7 +13,11 @@
     }
     .pride-footer {
   background: linear-gradient(to right, red, yellow, green);
+  width: 100%;       /* ensures full width */
+  position: relative; /* keeps it in flow */
+  left: 0;
 }
+    
 
 /** Variables **/
 
@@ -46,11 +50,23 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #ffffff; 
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   font-family: var(--font-family-body);
   font-optical-sizing: auto;
   font-style: normal;
+ display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* pushes footer to bottom */
 }
 
 button,
@@ -452,6 +468,35 @@ fieldset {
   color: crimson;
 }
 
+#aboutFilm img {
+  max-width: 100%;     /* don’t let it overflow the carousel width */
+  height: auto;        /* scale proportionally */
+  max-height: 300px;   /* cap the height */
+  margin: auto;
+  display: block;
+  object-fit: contain; /* ensures the full image is visible */
+}
+
+#aboutNGO img {
+  max-width: 100%;     /* don’t let it overflow the carousel width */
+  height: auto;        /* scale proportionally */
+  max-height: 300px;   /* cap the height */
+  margin: auto;
+  display: block;
+  object-fit: contain; /* ensures the full image is visible */
+}
+
+#links {
+  padding-bottom: 0;
+}
+
+#services {
+  padding-bottom: 0 !important;
+}
+
+main > *:last-child {
+    margin-bottom: 0 !important;
+}
 
     </style>
   <!-- Bootstrap CSS CDN -->
@@ -476,7 +521,7 @@ fieldset {
           <li class="nav-item"><a class="nav-link active" href="Map.html">Map</a></li>
           <li class="nav-item"><a class="nav-link active" href="index.html#donate">Donate</a></li>
           <li class="nav-item"><a class="nav-link active" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link active" href="index.html#contact">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#contact">Contact Us</a></li>
           <li class="nav-item"><a class="nav-link active" href="index.html#register">Register</a></li>
           </li>
           <a href="https://www.reddit.com/user/Pride_Girmitiya/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" target="_blank"><img src="images/social/reddit.png" alt="Company Logo" style="width: 40px; margin-left: 20px;"></a>
@@ -503,18 +548,18 @@ fieldset {
   </div>
 </section>
 
-  <!-- Continent -->
-  <section id="continent" class="py-5">
+<main>
+
+ <!-- ABOUT SECTION -->
+  <section id="about" class="py-5">
     <div class="container">
       <h2>🌈 Asia Coming Soon</h2>
       <p><br>
 Decolonizing the Narrative | Celebrating Global Queer Resistance<br><br>
-</p>
-</section>
 
   <!-- SERVICES / FEATURES SECTION -->
   <!-- Each column represents a feature you offer. You can replace icons/text -->
-  <section id="services" class="py-5">
+  <section id="services" class="pt-5 pb-0">
     <div class="container">
       <h2 class="text-center mb-4">🍁 LGBTQ2S+ Services Canada 🍁</h2>
       <div class="row">
@@ -613,9 +658,10 @@ Decolonizing the Narrative | Celebrating Global Queer Resistance<br><br>
       </div>
     </div>
   </section>
+  </main>
 
 <!-- LINKS SECTION -->
-<section id="links" class="py-5 bg-light">
+<section id="links" class="py-5 pb-0 bg-light">
   <div class="container">
     <div class="row text-center text-md-start align-items-start">
       
@@ -626,7 +672,7 @@ Decolonizing the Narrative | Celebrating Global Queer Resistance<br><br>
 
       <!-- Column 2 -->
       <div class="col-12 col-md-3 mb-4 mb-md-0">
-        <p><a href="index.html#mission" class="footer-link">Mission</a></p>
+        <p><a href="Mission.html" class="footer-link">Mission</a></p>
         <p><a href="index.html#news" class="footer-link">News Updates</a></p>
         
       </div>

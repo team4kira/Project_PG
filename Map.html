@@ -13,7 +13,11 @@
     }
     .pride-footer {
   background: linear-gradient(to right, red, yellow, green);
+  width: 100%;       /* ensures full width */
+  position: relative; /* keeps it in flow */
+  left: 0;
 }
+    
 
 /** Variables **/
 
@@ -46,11 +50,23 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #ffffff; 
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   font-family: var(--font-family-body);
   font-optical-sizing: auto;
   font-style: normal;
+ display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* pushes footer to bottom */
 }
 
 button,
@@ -452,6 +468,35 @@ fieldset {
   color: crimson;
 }
 
+#aboutFilm img {
+  max-width: 100%;     /* don’t let it overflow the carousel width */
+  height: auto;        /* scale proportionally */
+  max-height: 300px;   /* cap the height */
+  margin: auto;
+  display: block;
+  object-fit: contain; /* ensures the full image is visible */
+}
+
+#aboutNGO img {
+  max-width: 100%;     /* don’t let it overflow the carousel width */
+  height: auto;        /* scale proportionally */
+  max-height: 300px;   /* cap the height */
+  margin: auto;
+  display: block;
+  object-fit: contain; /* ensures the full image is visible */
+}
+
+#links {
+  padding-bottom: 0;
+}
+
+#services {
+  padding-bottom: 0 !important;
+}
+
+main > *:last-child {
+    margin-bottom: 0 !important;
+}
 
     </style>
   <!-- Bootstrap CSS CDN -->
@@ -476,7 +521,7 @@ fieldset {
           <li class="nav-item"><a class="nav-link active" href="Map.html">Map</a></li>
           <li class="nav-item"><a class="nav-link active" href="index.html#donate">Donate</a></li>
           <li class="nav-item"><a class="nav-link active" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link active" href="index.html#contact">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#contact">Contact Us</a></li>
           <li class="nav-item"><a class="nav-link active" href="index.html#register">Register</a></li>
           </li>
           <a href="https://www.reddit.com/user/Pride_Girmitiya/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" target="_blank"><img src="images/social/reddit.png" alt="Company Logo" style="width: 40px; margin-left: 20px;"></a>
@@ -503,24 +548,26 @@ fieldset {
   </div>
 </section>
 
-    <!-- EVENT / GALLERY SECTION -->
-  <section id="mission" section class="py-5">
-    <div class="container text-start">
-      <h2>🌎 Map</h2>
-       <div class="container mt-4">
-  <div class="row">
+<main>
+<section id="map" class="py-5">
+  <div class="container text-start">
+    <h2>🌎 Map</h2>
 
-      <!-- Image 1 -->
-    <div class="col-12 text-start">
-      </a>
-      <figcaption class="mt-2">
-65 countries we are starting with: <br>
- <div class="container my-5">
-  <div class="row">
-    <!-- Africa -->
-    <div class="col-md-4 mb-4">
-      <h4 class="text-africa">Africa</h4>
-      <ul class="list-unstyled">
+    <div class="row mt-4">
+      <div class="col-12">
+
+        Here are the 65 countries we are starting with:
+      </div>
+    </div>
+
+    <!-- COUNTRY LISTS START -->
+    <div class="container my-5">
+      <div class="row">
+
+        <!-- Africa -->
+        <div class="col-md-4 mb-4">
+          <h4 class="text-africa">Africa</h4>
+          <ul class="list-unstyled">
         <li>Botswana</li>
         <li>Cameroon</li>
         <li>Egypt</li>
@@ -542,13 +589,13 @@ fieldset {
         <li>Uganda</li>
         <li>Zambia</li>
         <li>Zimbabwe</li>
-      </ul>
-    </div>
+          </ul>
+        </div>
 
-    <!-- Asia -->
-    <div class="col-md-4 mb-4">
-      <h4 class="text-asia">Asia</h4>
-      <ul class="list-unstyled">
+        <!-- Asia -->
+        <div class="col-md-4 mb-4">
+          <h4 class="text-asia">Asia</h4>
+          <ul class="list-unstyled">
         <li>Afghanistan</li>
         <li>Bahrain</li>
         <li>Bangladesh</li>
@@ -569,13 +616,13 @@ fieldset {
         <li>Sri Lanka</li>
         <li>United Arab Emirates</li>
         <li>Yemen</li>
-      </ul>
-    </div>
+          </ul>
+        </div>
 
-    <!-- Oceania -->
-    <div class="col-md-4 mb-4">
-      <h4 class="text-oceania">Oceania</h4>
-      <ul class="list-unstyled">
+        <!-- Oceania (FIXED: moved INSIDE the row) -->
+        <div class="col-md-4 mb-4">
+          <h4 class="text-oceania">Oceania</h4>
+          <ul class="list-unstyled">
         <li>Australia</li>
         <li>Fiji</li>
         <li>Kiribati</li>
@@ -585,13 +632,16 @@ fieldset {
         <li>Tonga</li>
         <li>Tuvalu</li>
         <li>Vanuatu</li>
-      </ul>
-    </div>
+          </ul>
+        </div>
 
-    <!-- Americas & Caribbean -->
-    <div class="col-md-6 mb-4">
-      <h4 class="text-americas">Americas & Caribbean</h4>
-      <ul class="list-unstyled">
+      </div> <!-- end row -->
+
+       <!-- Americas -->
+      <div class="row mt-4">
+        <div class="col-md-6 mb-4">
+          <h4 class="text-americas">Americas & Caribbean</h4>
+          <ul class="list-unstyled">
         <li>Antigua and Barbuda</li>
         <li>Bahamas</li>
         <li>Barbados</li>
@@ -606,24 +656,23 @@ fieldset {
         <li>Saint Vincent and the Grenadines</li>
         <li>Trinidad and Tobago</li>
         <li>United States</li>
-      </ul>
-    </div>
-
+          </ul>
+        </div>
+     
     <!-- Europe -->
-    <div class="col-md-6 mb-4">
-      <h4 class="text-europe">Europe</h4>
-      <ul class="list-unstyled">
-        <li>Cyprus</li>
-        <li>Ireland</li>
-        <li>Malta</li>
-      </ul>
-    </div>
+  <div class="col-md-6 mb-4">
+    <h4 class="text-europe">Europe</h4>
+    <ul class="list-unstyled">
+      <li>Cyprus</li>
+      <li>Ireland</li>
+      <li>Malta</li>
+    </ul>
   </div>
 </div>
 
   <!-- SERVICES / FEATURES SECTION -->
   <!-- Each column represents a feature you offer. You can replace icons/text -->
-  <section id="services" class="py-5">
+  <section id="services" class="pt-5 pb-0">
     <div class="container">
       <h2 class="text-center mb-4">🍁 LGBTQ2S+ Services Canada 🍁</h2>
       <div class="row">
@@ -722,9 +771,10 @@ fieldset {
       </div>
     </div>
   </section>
+  </main>
 
 <!-- LINKS SECTION -->
-<section id="links" class="py-5 bg-light">
+<section id="links" class="py-5 pb-0 bg-light">
   <div class="container">
     <div class="row text-center text-md-start align-items-start">
       
@@ -735,7 +785,7 @@ fieldset {
 
       <!-- Column 2 -->
       <div class="col-12 col-md-3 mb-4 mb-md-0">
-        <p><a href="index.html#mission" class="footer-link">Mission</a></p>
+        <p><a href="Mission.html" class="footer-link">Mission</a></p>
         <p><a href="index.html#news" class="footer-link">News Updates</a></p>
         
       </div>

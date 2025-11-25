@@ -13,7 +13,11 @@
     }
     .pride-footer {
   background: linear-gradient(to right, red, yellow, green);
+  width: 100%;       /* ensures full width */
+  position: relative; /* keeps it in flow */
+  left: 0;
 }
+    
 
 /** Variables **/
 
@@ -46,11 +50,23 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #ffffff; 
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   font-family: var(--font-family-body);
   font-optical-sizing: auto;
   font-style: normal;
+ display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* pushes footer to bottom */
 }
 
 button,
@@ -470,6 +486,18 @@ fieldset {
   object-fit: contain; /* ensures the full image is visible */
 }
 
+#links {
+  padding-bottom: 0;
+}
+
+#services {
+  padding-bottom: 0 !important;
+}
+
+main > *:last-child {
+    margin-bottom: 0 !important;
+}
+
     </style>
   <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -520,29 +548,32 @@ fieldset {
   </div>
 </section>
 
-    <!-- EVENT / GALLERY SECTION -->
-  <section id="mission" section class="py-5">
-    <div class="container text-start">
-      <h2>🌈 Mission</h2>
-       <div class="container mt-4">
-  <div class="row">
+<main>
+<section id="mission" class="py-5">
+  <div class="container text-start">
+    <h2>🌈 Mission</h2>
 
-      <!-- Image 1 -->
-    <div class="col-12 text-start">
-      </a>
-      <figcaption class="mt-2">
-Our mission is threefold:<br><br>
-1️⃣&nbsp;<b>Reclaiming LGBTQ+ Histories</b><br>
+    <!-- Point 1 -->
+    <div class="row mt-4">
+      <div class="col-12">
+        Our mission is threefold:<br><br>
 
-We examine historical, sociological, and political evidence showing that many pre-colonial societies acknowledged and accepted queer and gender-diverse identities. Homosexuality was not a foreign import—colonial homophobia was.<br>
-We’re kicking off this project by exploring 65 former British colonies and highlighting the powerful ways each nation is actively working to combat homophobia. <br>
-<br>Here are the 65 countries we are starting with: <br>
- <div class="container my-5">
-  <div class="row">
-    <!-- Africa -->
-    <div class="col-md-4 mb-4">
-      <h4 class="text-africa">Africa</h4>
-      <ul class="list-unstyled">
+        1️⃣ <b>Reclaiming LGBTQ+ Histories</b><br>
+        We examine historical, sociological, and political evidence showing that many pre-colonial societies acknowledged and accepted queer and gender-diverse identities.<br>
+        We’re kicking off this project by exploring 65 former British colonies...<br><br>
+
+        Here are the 65 countries we are starting with:
+      </div>
+    </div>
+
+    <!-- COUNTRY LISTS START -->
+    <div class="container my-5">
+      <div class="row">
+
+        <!-- Africa -->
+        <div class="col-md-4 mb-4">
+          <h4 class="text-africa">Africa</h4>
+          <ul class="list-unstyled">
         <li>Botswana</li>
         <li>Cameroon</li>
         <li>Egypt</li>
@@ -564,13 +595,13 @@ We’re kicking off this project by exploring 65 former British colonies and hig
         <li>Uganda</li>
         <li>Zambia</li>
         <li>Zimbabwe</li>
-      </ul>
-    </div>
+          </ul>
+        </div>
 
-    <!-- Asia -->
-    <div class="col-md-4 mb-4">
-      <h4 class="text-asia">Asia</h4>
-      <ul class="list-unstyled">
+        <!-- Asia -->
+        <div class="col-md-4 mb-4">
+          <h4 class="text-asia">Asia</h4>
+          <ul class="list-unstyled">
         <li>Afghanistan</li>
         <li>Bahrain</li>
         <li>Bangladesh</li>
@@ -591,13 +622,13 @@ We’re kicking off this project by exploring 65 former British colonies and hig
         <li>Sri Lanka</li>
         <li>United Arab Emirates</li>
         <li>Yemen</li>
-      </ul>
-    </div>
+          </ul>
+        </div>
 
-    <!-- Oceania -->
-    <div class="col-md-4 mb-4">
-      <h4 class="text-oceania">Oceania</h4>
-      <ul class="list-unstyled">
+        <!-- Oceania (FIXED: moved INSIDE the row) -->
+        <div class="col-md-4 mb-4">
+          <h4 class="text-oceania">Oceania</h4>
+          <ul class="list-unstyled">
         <li>Australia</li>
         <li>Fiji</li>
         <li>Kiribati</li>
@@ -607,13 +638,16 @@ We’re kicking off this project by exploring 65 former British colonies and hig
         <li>Tonga</li>
         <li>Tuvalu</li>
         <li>Vanuatu</li>
-      </ul>
-    </div>
+          </ul>
+        </div>
 
-    <!-- Americas & Caribbean -->
-    <div class="col-md-6 mb-4">
-      <h4 class="text-americas">Americas & Caribbean</h4>
-      <ul class="list-unstyled">
+      </div> <!-- end row -->
+
+       <!-- Americas -->
+      <div class="row mt-4">
+        <div class="col-md-6 mb-4">
+          <h4 class="text-americas">Americas & Caribbean</h4>
+          <ul class="list-unstyled">
         <li>Antigua and Barbuda</li>
         <li>Bahamas</li>
         <li>Barbados</li>
@@ -628,100 +662,128 @@ We’re kicking off this project by exploring 65 former British colonies and hig
         <li>Saint Vincent and the Grenadines</li>
         <li>Trinidad and Tobago</li>
         <li>United States</li>
-      </ul>
-    </div>
-
+          </ul>
+        </div>
+     
     <!-- Europe -->
-    <div class="col-md-6 mb-4">
-      <h4 class="text-europe">Europe</h4>
-      <ul class="list-unstyled">
-        <li>Cyprus</li>
-        <li>Ireland</li>
-        <li>Malta</li>
-      </ul>
-    </div>
+  <div class="col-md-6 mb-4">
+    <h4 class="text-europe">Europe</h4>
+    <ul class="list-unstyled">
+      <li>Cyprus</li>
+      <li>Ireland</li>
+      <li>Malta</li>
+    </ul>
+  </div>
 </div>
 
-2️⃣&nbsp;<b>Celebrating Today’s BIPOC Changemakers</b><br>
+    </div> <!-- end inner container -->
+    <!-- COUNTRY LISTS END -->
 
-We spotlight the remarkable contributions of BIPOC activists, educators, organizers, and creators who re advancing LGBTQ+ rights in their communities. Their work challenges the harmful myth that queerness is a “Western illness” and affirms that queer identities have always existed across the world.<br><br>
+    <!-- Section 2 (FIXED alignment) -->
+    <div class="row mt-4">
+      <div class="col-12">
+        2️⃣ <b>Celebrating Today’s BIPOC Changemakers</b><br>
 
-<b>Our Vision</b><br><br>
+We spotlight the remarkable contributions of BIPOC activists, educators, organizers, and creators who are advancing LGBTQ+ rights in their communities. Their work challenges the harmful myth that queerness is a “Western illness” and affirms that queer identities have always existed across the world.<br>
+<br>Our Vision is <b>a future where:</b><br><br>
+  <ul class="list-unstyled">
+  <li>- Decolonized histories replace colonial narratives</li>
+  <li>- LGBTQ+ people in formerly colonized nations are celebrated, safe, and empowered</li>
+  <li>- BIPOC leadership in queer liberation is recognized and amplified</li>
+  <li>- Communities reclaim their cultural histories of gender and sexual diversity</li></ul><br>
 
-A future where:<br>
-  <li>Decolonized histories replace colonial narratives</li>
-  <li>LGBTQ+ people in formerly colonized nations are celebrated, safe, and empowered</li>
-  <li>BIPOC leadership in queer liberation is recognized and amplified</li>
-  <li>Communities reclaim their cultural histories of gender and sexual diversity</li><br>
+        3️⃣ <b>Reclaiming BIPOC Culture</b><br>
+        Homophobia and transphobia are colonial constructs. Framing LGBTQ+ identities as a “Western creation” undermines how BIPOC LGBTQ+ communities connect with and celebrate their own cultures. Project PG spotlights phenomenal BIPOC music, films, documentaries, and television that amplify our voices and stories—reminding the world that we’ve always belonged, and we always will.
+<br><br>
+      </div>
+    </div>
 
-3️⃣&nbsp;<b>Reclaiming BIPOC Culture</b><br>
-Homophobia and transphobia are colonial constructs. Framing LGBTQ+ identities as a “Western creation” undermines how BIPOC LGBTQ+ communities connect with and celebrate their own cultures. Project PG spotlights phenomenal BIPOC music, films, documentaries, and television that amplify our voices and stories—reminding the world that we’ve always belonged, and we always will.
-<br><br> 
- <div class="container text-center">
+  </div> 
+
+<!-- Movie Recommendations -->
+<div class="row mt-4">
+  <div class="col-12 text-center">
     <p class="mb-2"><b>Project PG Movie Recommendations</b></p>
-    <!-- Slideshow Gallery -->
+
     <div id="aboutFilm" class="carousel slide small-carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <a href="https://www.imdb.com/title/tt1559673" target="_blank">
-          <img src="images/Movies/Dancing-Boys-of-Afghanistan-documentary.jpg" class="d-block w-100 rounded" alt="Rainbow Afghanistan (Part of Arc-en-Ciel International Raindbow)">
-        </a>
+            <img src="images/Movies/Dancing-Boys-of-Afghanistan-documentary.jpg"
+                 class="d-block w-100 rounded"
+                 alt="Dancing Boys of Afghanistan Documentary">
+          </a>
         </div>
+      </div>
+
       <!-- Controls -->
       <button class="carousel-control-prev" type="button" data-bs-target="#aboutFilm" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon"></span>
         <span class="visually-hidden">Previous</span>
       </button>
+
       <button class="carousel-control-next" type="button" data-bs-target="#aboutFilm" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="carousel-control-next-icon"></span>
         <span class="visually-hidden">Next</span>
       </button>
-    </div><br>
-
-  <div class="container text-center">
-    <p class="mb-2"><b>Project PG Spotify Playlist</b></p>
-
-</p>
-        <b></b> <iframe
-        style="border-radius:12px"
-        src="https://open.spotify.com/embed/playlist/2LyP8vFbsuIozV9SiLeMff?utm_source=generator"
-        width="95%"
-        height="100"
-        frameborder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-      </iframe>
-</figcaption>
     </div>
-      <div class="container text-center">
+  </div>
+</div>
+
+<!-- Spotify Playlist -->
+<div class="row mt-4">
+  <div class="col-12 text-center">
+    <p class="mb-2"><b>Project PG Spotify Playlist</b></p>
+    <iframe style="border-radius:12px"
+            src="https://open.spotify.com/embed/playlist/2LyP8vFbsuIozV9SiLeMff?utm_source=generator"
+            width="50%" height="100" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+  </div>
+</div>
+
+<!-- NGO Slideshow -->
+<div class="row mt-4">
+  <div class="col-12 text-center">
     <p class="mb-2"><b>BIPOC Organizations Around the World Fighting Against Homophobia and Transphobia</b></p>
-    <!-- Slideshow Gallery -->
+
     <div id="aboutNGO" class="carousel slide small-carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <a href="https://www.arcenciel-international.be/world-resources/rainbow-afghanistan" target="_blank">
-          <img src="images/NGOs/Rainbow_Afghnistan.jpg" class="d-block w-100 rounded" alt="Rainbow Afghanistan (Part of Arc-en-Ciel International Raindbow)">
-        </a>
+            <img src="images/NGOs/Rainbow_Afghnistan.jpg"
+                 class="d-block w-100 rounded"
+                 alt="Rainbow Afghanistan">
+          </a>
         </div>
         <div class="carousel-item">
           <a href="https://www.rainbowrailroad.org" target="_blank">
-          <img src="images/NGOs/Rainbow Railroad.png" class="d-block w-100 rounded" alt="Rainbow Railroad">
+            <img src="images/NGOs/Rainbow Railroad.png"
+                 class="d-block w-100 rounded"
+                 alt="Rainbow Railroad">
           </a>
         </div>
+      </div>
+
       <!-- Controls -->
       <button class="carousel-control-prev" type="button" data-bs-target="#aboutNGO" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon"></span>
         <span class="visually-hidden">Previous</span>
       </button>
+
       <button class="carousel-control-next" type="button" data-bs-target="#aboutNGO" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="carousel-control-next-icon"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+  </div>
+</div>
+
+
 
   <!-- SERVICES / FEATURES SECTION -->
   <!-- Each column represents a feature you offer. You can replace icons/text -->
-  <section id="services" class="py-5">
+  <section id="services" class="pt-5 pb-0">
     <div class="container">
       <h2 class="text-center mb-4">🍁 LGBTQ2S+ Services Canada 🍁</h2>
       <div class="row">
@@ -820,9 +882,10 @@ Homophobia and transphobia are colonial constructs. Framing LGBTQ+ identities as
       </div>
     </div>
   </section>
+  </main>
 
 <!-- LINKS SECTION -->
-<section id="links" class="py-5 bg-light">
+<section id="links" class="py-5 pb-0 bg-light">
   <div class="container">
     <div class="row text-center text-md-start align-items-start">
       
@@ -833,7 +896,7 @@ Homophobia and transphobia are colonial constructs. Framing LGBTQ+ identities as
 
       <!-- Column 2 -->
       <div class="col-12 col-md-3 mb-4 mb-md-0">
-        <p><a href="index.html#mission" class="footer-link">Mission</a></p>
+        <p><a href="Mission.html" class="footer-link">Mission</a></p>
         <p><a href="index.html#news" class="footer-link">News Updates</a></p>
         
       </div>
