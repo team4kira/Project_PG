@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+  /* Make the whole body taller than the iframe */
+  body {
+    margin: 0;
+    padding: 10px;
+    font-family: sans-serif;
+  }
+
+  /* IMPORTANT: Make the inner content scrollable */
+  .news-content {
+    height: 600px; /* must be larger than iframe height (your iframe is 200px) */
+    overflow-y: auto;
+  }
+</style>
 </head>
 <body>
 
-<main>
-
  <!-- NEWS SECTION -->
-  <section id="news" class="py-5">
-    <div class="container">
+  <section id="news">
       <h2>Not inclined to monitor every incident of hate speech: Supreme Court</h2>
       <p><br>
 India | 25 November 2025 | The Hindu (Subscription Required) | <a href="https://www.thehindu.com/news/national/not-inclined-to-monitor-every-incident-of-hate-speech-supreme-court/article70322804.ece" target="_blank" class="footer-link">Article Link</a><br><br>

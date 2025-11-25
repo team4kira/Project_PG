@@ -502,6 +502,7 @@ main > *:last-child {
   <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- HEADER / NAVBAR -->
@@ -550,19 +551,49 @@ main > *:last-child {
 
 <main>
 
+<!-- IFRAME -->
+
 <section id="news" class="py-5">
   <div class="container">
     <h2>📰 News Updates</h2>
 
-    <div style="width:100%; max-width:800px;">
-      <iframe 
-        src="News.html"
-        style="width:100%; height:200px; border:1px solid #ccc; border-radius:10px;"
-        loading="lazy"
-      ></iframe>
-    </div>
-  </div>
-</section>
+<div id="news-frame-wrapper" style="width:100%; max-width:800px;">
+  <iframe 
+    id="news-frame"
+    src="News.html"
+    scrolling="yes"
+    style="width:100%; height:200px; border:1px solid #ccc; border-radius:10px; overflow:auto;">
+  </iframe>
+</div>
+
+<script>
+  const frame = document.getElementById("news-frame");
+  let scrollInterval;
+
+  frame.addEventListener("load", () => {
+    // Delay slightly to allow News.html content to fully render
+    setTimeout(() => {
+      try {
+        startAutoScroll();
+      } catch (e) {
+        console.error(e);
+      }
+    }, 300); 
+  });
+
+  function startAutoScroll() {
+    scrollInterval = setInterval(() => {
+      frame.contentWindow.scrollBy(0, 1);
+    }, 40);
+  }
+
+  function stopAutoScroll() {
+    clearInterval(scrollInterval);
+  }
+
+  frame.addEventListener("mouseover", stopAutoScroll);
+  frame.addEventListener("click", stopAutoScroll);
+</script>
 
  <!-- ABOUT SECTION -->
   <section id="about" class="py-5">
