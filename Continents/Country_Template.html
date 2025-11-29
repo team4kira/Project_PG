@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="../../images/Head_Logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pride Girmitiya</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Manrope:wght@200..800&display=swap">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&display=swap");
+    .custom-nav {
+      background: linear-gradient(to right, green, yellow, red);
+    }
+    .pride-footer {
+  background: linear-gradient(to right, red, yellow, green);
+  width: 100%;       /* ensures full width */
+  position: relative; /* keeps it in flow */
+  left: 0;
+}
+    
+
+/** Variables **/
+
+:root {
+  --color-background: #e7e7e7;
+  --color-background-alt: #bdb4fe;
+  --color-border-active: #5b26db;
+  --color-border-default: #d1d1d1;
+  --color-highlight: #bdb4fe;
+  --color-primary: #5b26db;
+  --color-primary-active: #401c96;
+  --color-text-default: #262626;
+  --color-text-muted: #4f4f4f;
+
+  --font-family-body: "Manrope", sans-serif;
+  --font-family-display: "Cabin", sans-serif;
+}
+
+/** Base **/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #ffffff; 
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-family-body);
+  font-optical-sizing: auto;
+  font-style: normal;
+ display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* pushes footer to bottom */
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+[type="checkbox"],
+[type="radio"],
+[type="range"] {
+  appearance: none;
+  flex-shrink: 0;
+  padding: 0;
+  user-select: none;
+}
+
+[type="checkbox"]:focus,
+[type="radio"]:focus,
+[type="range"]:focus {
+  outline: none;
+}
+
+/** Components **/
+
+.fs-form {
+  display: grid;
+  row-gap: 1.5rem;
+}
+
+.fs-form:where(.fs-layout__2-column) {
+  column-gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+fieldset {
+  display: grid;
+  margin: 1.5rem 0;
+  row-gap: 1.5rem;
+}
+
+.fs-form:where(.fs-layout__2-column) fieldset {
+  column-gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1 / -1;
+}
+
+.fs-fieldset-title {
+  color: var(--color-text-default);
+  font-family: var(--font-family-display);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin-bottom: 1.5rem;
+  grid-column: 1 / -1;
+}
+
+.fs-field {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.fs-label {
+  color: var(--color-text-default);
+  display: block;
+  font-family: var(--font-family-display);
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.fs-description {
+  color: var(--color-text-muted);
+  display: block;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.fs-button-group {
+  display: flex;
+  flex-direction: row-reverse;
+  column-gap: 1.5rem;
+}
+
+.fs-form:where(.fs-layout__2-column) .fs-button-group {
+  grid-column: 1 / -1;
+}
+
+.fs-button {
+  background-color: var(--color-primary);
+  border-radius: 9999px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: 0.75rem 2rem;
+  transition-duration: 200ms;
+  transition-property: background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fs-button:hover {
+  background-color: var(--color-primary-active);
+}
+
+.fs-button:focus-visible {
+  background-color: var(--color-primary-active);
+  outline: 4px solid var(--color-highlight);
+}
+
+.fs-input,
+.fs-select {
+  appearance: none;
+  border-radius: 9999px;
+  border-width: 0;
+  box-shadow: var(--color-border-default) 0 0 0 1px inset;
+  color: var(--color-text-default);
+  font-size: 1rem;
+  height: 3rem;
+  line-height: 1.5rem;
+  outline: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.fs-input:focus-visible,
+.fs-select:focus-visible {
+  box-shadow: var(--color-border-active) 0 0 0 1px inset;
+}
+
+.fs-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.fs-checkbox-group,
+.fs-radio-group {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.fs-checkbox-field,
+.fs-radio-field {
+  column-gap: 0.5rem;
+  display: flex;
+}
+
+:is(.fs-checkbox-field, .fs-radio-field) .fs-label + .fs-description {
+  margin-top: 0.25rem;
+}
+
+.fs-checkbox-wrapper,
+.fs-radio-wrapper {
+  align-items: center;
+  display: flex;
+  height: 1.25rem;
+}
+
+.fs-checkbox,
+.fs-radio {
+  background-color: #fff;
+  border: 1px solid var(--color-border-default);
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.fs-checkbox {
+  border-radius: 0.25rem;
+}
+
+.fs-radio {
+  border-radius: 100%;
+}
+
+.fs-checkbox:checked,
+.fs-radio:checked {
+  background-color: var(--color-primary);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-color: transparent;
+}
+
+.fs-checkbox:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
+
+.fs-radio:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+}
+
+.fs-checkbox:focus-visible,
+.fs-radio:focus-visible {
+  border-color: var(--color-border-active);
+  outline: 4px solid var(--color-highlight);
+  outline-offset: 0;
+}
+
+.fs-checkbox:checked:focus-visible,
+.fs-radio:checked:focus-visible {
+  border-color: transparent;
+}
+
+.fs-select {
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.625em 1.625em;
+  padding-right: 2.875rem;
+}
+
+.fs-slider {
+  background: transparent;
+  cursor: pointer;
+  height: 1.25rem;
+  width: 100%;
+}
+
+.fs-slider::-moz-range-track {
+  background-color: var(--color-background);
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+.fs-slider::-webkit-slider-runnable-track {
+  background-color: var(--color-background);
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+.fs-slider::-moz-range-thumb {
+  background-color: var(--color-primary);
+  border: none; /* Removes extra border that FF applies */
+  border-radius: 50%;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.fs-slider::-webkit-slider-thumb {
+  appearance: none;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  height: 1.25rem;
+  margin-top: -0.375rem; /* Centers thumb on the track */
+  width: 1.25rem;
+}
+
+.fs-slider:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.fs-slider:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.fs-switch {
+  background-color: var(--color-background-alt);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2.75' fill='white'/%3e%3c/svg%3e");
+  background-position: left center;
+  background-repeat: no-repeat;
+  border-radius: 1.25rem;
+  cursor: pointer;
+  height: 1.25rem;
+  transition-duration: 200ms;
+  transition-property: background-color, background-position;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  width: 2.5rem;
+}
+
+.fs-switch:checked {
+  background-color: var(--color-primary);
+  background-position: right center;
+}
+
+.fs-switch:focus-visible {
+  outline: 4px solid var(--color-highlight);
+  outline-offset: 0;
+}
+
+.fs-textarea {
+  appearance: none;
+  border-radius: 0.75rem;
+  border-width: 0;
+  box-shadow: var(--color-border-default) 0 0 0 1px inset;
+  color: var(--color-text-default);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  outline: none;
+  padding: 0.5rem 0.75rem;
+  resize: vertical;
+}
+
+.fs-textarea:focus-visible {
+  box-shadow: var(--color-border-active) 0 0 0 1px inset;
+}
+
+.fs-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+/** Utilities **/
+
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
+.fs-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.slider-label-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.slider-label-text {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Prevent click from disabling hover behavior */
+.nav-item .dropdown-toggle::after {
+    margin-left: 0.3em;
+}
+#aboutGallery img {
+  max-height: 500px;
+  object-fit: contain;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+#links {
+  background-color: #222; /* Dark background */
+}
+  .hero-section {
+    background-image: url('../../images/PrideBanner.png');  /* Change to your rainbow image path */
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% 100%;   /* FORCE stretch both width & height */
+    
+    height: 300px;                /* STATIC HEIGHT – adjust as needed (e.g., 250px, 350px) */
+    
+    display: flex;
+    align-items: center;          /* Vertically center content */
+    justify-content: center;      /* Horizontally center content */
+    text-align: center;
+  }
+.footer-link {
+  color: #007bff; /* Bootstrap primary blue */
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s ease;
+}
+.footer-link:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+/* Text Colour */
+.text-africa {
+  color: indigo;
+}
+
+.text-asia {
+  color: gold; /* Brighter and more readable than pure yellow */
+}
+
+.text-oceania {
+  color: royalblue;
+}
+
+.text-americas {
+  color: seagreen;
+}
+
+.text-europe {
+  color: crimson;
+}
+
+#aboutFilm img {
+  max-width: 100%;     /* don’t let it overflow the carousel width */
+  height: auto;        /* scale proportionally */
+  max-height: 300px;   /* cap the height */
+  margin: auto;
+  display: block;
+  object-fit: contain; /* ensures the full image is visible */
+}
+
+#aboutNGO img {
+  max-width: 100%;     /* don’t let it overflow the carousel width */
+  height: auto;        /* scale proportionally */
+  max-height: 300px;   /* cap the height */
+  margin: auto;
+  display: block;
+  object-fit: contain; /* ensures the full image is visible */
+}
+
+#links {
+  padding-bottom: 0;
+}
+
+#services {
+  padding-bottom: 0 !important;
+}
+
+main > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+    </style>
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- HEADER / NAVBAR -->
+  <!-- You can change the site name, menu links, or add a logo here -->
+  <nav class="navbar navbar-expand-lg navbar-lite custom-nav">
+    <div class="container">
+      <a href=""><img src="../../images/Head_Logo.png" alt="Company Logo" style="width: 80px; margin-left: 10px;"></a>
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="../../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../../About.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../../Mission.html">Mission</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../../Map.html">Map</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../../index.html#donate">Donate</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../../index.html#contact">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link active" href="https://forms.gle/gvHQx5qSmqXQgNKN6" target="_blank">Register</a></li>
+          </li>
+          <a href="https://www.reddit.com/user/Pride_Girmitiya/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" target="_blank"><img src="../../images/social/reddit.png" alt="Company Logo" style="width: 40px; margin-left: 20px;"></a>
+          <a href="https://youtube.com/@pridegirmitiya?si=5IE7AYJdo3kKuxdd" target="_blank"><img src="../../images/social/youtube.png" alt="Company Logo" style="width: 40px; margin-left: 20px;"></a>
+          <a href="https://www.instagram.com/pride_girmitiya" target="_blank"><img src="../../images/social/instagram.png" alt="Company Logo" style="width: 40px; margin-left: 20px;"></a>
+          <a href="https://www.facebook.com/share/1CtcGQyCzU/" target="_blank"><img src="../../images/social/facebook.png" alt="Company Logo" style="width: 40px; margin-left: 20px;"></a>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+ <section id="home" class="hero-section">
+  <div class="container text-center text-white">
+    <h1 class="display-4 text-dark d-flex align-items-center justify-content-center">
+<img src="../../images/world.png" alt="Company Logo" style="width: 480px; display: block; margin: 0 auto;" usemap="#image-map">
+<map name="image-map">
+    <area target="_self" alt="Americas" title="Americas" href="Americas.html" coords="95,11,0,50,1,94,39,120,72,244,167,351,211,504,272,506,276,419,320,320,239,244,193,170,280,118,286,53,278,19,310,4" shape="poly">
+    <area target="_self" alt="Africa" title="Africa" href="Africa.html" coords="359,180,364,276,445,304,470,425,563,421,609,323,603,252,563,251,548,221,528,178,500,167,465,162,423,161" shape="poly">
+    <area target="_self" alt="Asia" title="Asia" href="Asia.html" coords="502,148,533,176,559,231,574,249,634,210,668,257,713,272,744,313,825,339,880,332,903,288,887,192,905,79,915,5,503,11,517,71,537,96,548,113,540,135" shape="poly">
+    <area target="_self" alt="Oceania" title="Oceania" href="Oceania.html" coords="838,341,883,335,901,299,936,306,935,325,965,382,975,455,915,471,849,458,781,450,785,372" shape="poly">
+    <area target="_self" alt="Europe" title="Europe" href="Europe.html" coords="505,162,393,159,293,52,283,22,321,3,397,4,444,54,500,33,510,71,529,97,544,117" shape="poly">
+</map>
+</h1>
+  </div>
+</section>
+
+<main>
+
+    <!-- Asia: Afghanistan -->
+    <section id="afghanistan" class="row">
+      
+      <!-- Column 1: Navigation Links -->
+      <nav class="col-md-2 bg-light p-3">
+        <h5>Content</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link" href="#history">History and Anthropology</a></li>
+          <li class="nav-item"><a class="nav-link" href="#challenge">LGBTQ+ Challenges</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resolve">Overcoming LGBTQ+ Challenges</a></li>
+          <li class="nav-item"><a class="nav-link" href="#aid">Organizations Aiding the Community</a></li>
+          <li class="nav-item"><a class="nav-link" href="#media">Media Representation</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Column 2: Main Article -->
+      <main class="col-md-8 p-4">
+        <h2><img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f1e6-1f1eb.svg" width="30">&nbsp;Afghanistan Coming Soon</h2>
+      <p>Decolonizing the Narrative | Celebrating Global Queer Resistance<br><br>
+
+        <h2 id="history">History and Anthropology</h2>
+        <p>This is the bulk of your article content. Add paragraphs, images, or anything here.</p>
+        
+        <h2 id="challenge">LGBTQ+ Challenges</h2>
+        <p>Continue with more detailed content here.</p>
+        
+        <h2 id="resolve">Overcoming LGBTQ+ Challenges</h2>
+        <p>Wrap up your article with final thoughts.</p>
+
+        <h2 id="aid">Organizations Aiding the Community</h2>
+        <p>Wrap up your article with final thoughts.</p>
+
+        <h2 id="media">Media Representation</h2>
+        <p>Wrap up your article with final thoughts.</p>
+      </main>
+      
+      <!-- Column 3: Resources -->
+      <aside class="col-md-2 bg-light p-3">
+        <img src="https://flagcdn.com/af.svg" 
+     alt="Flag of Afghanistan" 
+     style="max-width:150px;"><br>
+        <h5>Resources</h5>
+        <ul class="list-unstyled">
+          <li><a href="https://example.com">External Resource 1</a></li>
+          <li><a href="https://example.com">External Resource 2</a></li>
+          <li><a href="https://example.com">External Resource 3</a></li>
+        </ul>
+      </aside>
+      
+    </section>
+    <!-- End Section -->
+
+
+
+  <!-- SERVICES / FEATURES SECTION -->
+  <!-- Each column represents a feature you offer. You can replace icons/text -->
+  <section id="services" class="pt-5 pb-0">
+    <div class="container">
+      <h2 class="text-center mb-4">🍁 LGBTQ2S+ Services Canada 🍁</h2>
+      <div class="row">
+        <div class="col-md-4 text-start">
+          <h4>Community</h4>
+          <p>
+            <ul class="list-unstyled text-start">
+  <li><strong>The 519 Community Centre</strong></li>
+  <li>📞 416-392-6874</li>
+  <li>🌐 <a href="https://the519.org" target="_blank">the519.org</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>Family Service Toronto</strong></li>
+  <li>📞 416-595-9618</li>
+  <li>🌐 <a href="https://familyservicetoronto.org/area-of-expertise/sexual-orientation-gender-identity?utm_source=chatgpt.com" target="_blank">familyservicestoronto.org</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>HQ Toronto Gay Healthcare</strong></li>
+  <li>📞 416-392-6874</li>
+  <li>🌐 <a href="https://hqtoronto.ca" target="_blank">HQToronto.ca</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>Egale</strong></li>
+  <li>📞 416-964-7887</li>
+  <li>🌐 <a href="https://egale.ca/about/" target="_blank">egale.ca</a></li>
+</ul>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>MAX Ottawa</strong></li>
+  <li>📞 613-701-6555</li>
+  <li>🌐 <a href="https://maxottawa.ca/about/" target="_blank">maxottawa.ca</a></li>
+</ul>
+          </p>
+        </div>
+        <div class="col-md-4 text-start">
+          <h4>Crisis Supports</h4>
+          <p>
+            <ul class="list-unstyled text-start">
+  <li><strong>YouthLine</strong></li>
+  <li>📞 1-800-268-9688</li>
+  <li>🌐 <a href="https://www.youthline.ca/?utm_source=chatgpt.com" target="_blank">YouthLine.ca</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>Kids Help Phone</strong></li>
+  <li>📞 1-800-668-6868</li>
+  <li>🌐 <a href="https://kidshelpphone.ca" target="_blank">kidshelpphone.ca</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>Trans Lifeline</strong></li>
+  <li>📞 1-877-330-6366</li>
+  <li>🌐 <a href="https://translifeline.org" target="_blank">TransLifeline.org</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>2-1-1 Ontario Social Services</strong></li>
+  <li>📞 2-1-1 (call)</li>
+  <li>🌐 <a href="https://211ontario.ca" target="_blank">211ontario.ca</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>9-8-8 Suicide Crisis Helpline</strong></li>
+  <li>📞 9-8-8 (call or text)</li>
+</ul>
+          </p>
+        </div>
+        <div class="col-md-4 text-start">
+          <h4>Specialized Services</h4>
+          <p>
+            <ul class="list-unstyled text-start">
+  <li><strong>Rainbow Connect Refugee Support</strong></li>
+  <li>📞 416-824-3726</li>
+  <li>📧 nicholas.manyan@tngcs.org</li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>PFlag Parental Support for LGBTQ+ Children</strong></li>
+  <li>📧 support@pflagcanada.ca</li>
+  <li>🌐 <a href="https://pflagcanada.ca/" target="_blank">pflagcanada.ca</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>Pieces to Pathways Substance Use Support</strong></li>
+  <li>🌐 <a href="https://breakawaycs.ca/programs/pieces-to-pathways/" target="_blank">breakawaycs.ca</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>United in Pride Immigrant Services</strong></li>
+  <li>🌐 <a href="https://unitedinpride.ca" target="_blank">unitedinpride.ca</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>Home For Queers Toronto Facebook</strong></li>
+  <li>🌐 <a href="https://www.facebook.com/share/g/1MGsti6ugK/" target="_blank">facebook.com</a></li>
+</ul>
+<ul class="list-unstyled text-start">
+  <li><strong>Rainbow CAMH Mental Health Services</strong></li>
+  <li>📞 416-535-8501 (press 2)</li>
+  <li>🌐 <a href="https://www.camh.ca/en/patients-and-families/programs-and-services/rainbow-services-2slgbtq?utm_source=chatgpt.com" target="_blank">camh.ca</a></li>
+</ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+<!-- LINKS SECTION -->
+<section id="links" class="py-5 pb-0 bg-light">
+  <div class="container">
+    <div class="row text-center text-md-start align-items-start">
+      
+      <!-- Column 1: Logo -->
+      <div class="col-12 col-md-3 mb-4 mb-md-0 d-flex justify-content-center justify-content-md-start">
+        <img src="../../images/Logo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+      </div>
+
+      <!-- Column 2 -->
+      <div class="col-12 col-md-3 mb-4 mb-md-0">
+        <p><a href="../../Mission.html" class="footer-link">Mission</a></p>
+        <p><a href="../../index.html#news" class="footer-link">News Updates</a></p>
+        
+      </div>
+
+      <!-- Column 3 -->
+      <div class="col-12 col-md-3 mb-4 mb-md-0">
+        <p><a href="../../Land.html" class="footer-link">Land Acknowledgement</a></p>
+        <p><a href="../../index.html#donate" class="footer-link">Donate</a></p>
+      </div>
+
+      <!-- Column 4 -->
+      <div class="col-12 col-md-3">
+        <p><a href="../../index.html#contact" class="footer-link">Contact</a></p>
+        <p><a href="https://forms.gle/gvHQx5qSmqXQgNKN6" target="_blank" class="footer-link">Register</a></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+  <!-- Edit copyright or add social media icons -->
+  <footer class="text-center py-3 pride-footer">
+    <p>© 2025 | Project Pride Girmitiya | ALL RIGHTS RESERVED</p>
+  </footer>
+
+  <!-- Bootstrap JS (Optional, for navbar toggle or components) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+<script>
+  imageMapResize();
+</script>
+</body>
+</html>
