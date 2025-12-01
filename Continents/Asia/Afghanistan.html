@@ -498,6 +498,11 @@ main > *:last-child {
     margin-bottom: 0 !important;
 }
 
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* keeps it flush under the button */
+}
     </style>
   <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -518,7 +523,25 @@ main > *:last-child {
           <li class="nav-item"><a class="nav-link active" href="../../index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link active" href="../../About.html">About</a></li>
           <li class="nav-item"><a class="nav-link active" href="../../Mission.html">Mission</a></li>
-          <li class="nav-item"><a class="nav-link active" href="../../Map.html">Maps</a></li>
+<li class="nav-item dropdown">
+  <div class="d-flex align-items-center" id="mapsDropdownWrapper">
+    <!-- Main link -->
+    <a class="nav-link" href="../../Map.html">Maps</a>
+
+    <!-- Caret toggle -->
+    <a class="nav-link dropdown-toggle px-1" href="#" id="navbarDropdown" role="button"
+       data-bs-toggle="dropdown" aria-expanded="false"></a>
+  </div>
+
+  <!-- Dropdown menu -->
+  <ul class="dropdown-menu" aria-labelledby="mapsDropdownWrapper">
+    <li><a class="dropdown-item" href="../../Africa.html">Africa</a></li>
+    <li><a class="dropdown-item" href="../../Americas.html">Americas</a></li>
+    <li><a class="dropdown-item" href="../../Asia.html">Asia</a></li>
+    <li><a class="dropdown-item" href="../../Europe.html">Europe</a></li>
+    <li><a class="dropdown-item" href="../../Oceania.html">Oceania</a></li>
+  </ul>
+</li>
           <li class="nav-item"><a class="nav-link active" href="../../index.html#donate">Donate</a></li>
           <li class="nav-item"><a class="nav-link active" href="#services">Services</a></li>
           <li class="nav-item"><a class="nav-link active" href="../../index.html#contact">Contact Us</a></li>
@@ -538,11 +561,11 @@ main > *:last-child {
     <h1 class="display-4 text-dark d-flex align-items-center justify-content-center">
 <img src="../../images/world.png" alt="Company Logo" style="width: 480px; display: block; margin: 0 auto;" usemap="#image-map">
 <map name="image-map">
-    <area target="_self" alt="Americas" title="Americas" href="Americas.html" coords="95,11,0,50,1,94,39,120,72,244,167,351,211,504,272,506,276,419,320,320,239,244,193,170,280,118,286,53,278,19,310,4" shape="poly">
-    <area target="_self" alt="Africa" title="Africa" href="Africa.html" coords="359,180,364,276,445,304,470,425,563,421,609,323,603,252,563,251,548,221,528,178,500,167,465,162,423,161" shape="poly">
-    <area target="_self" alt="Asia" title="Asia" href="Asia.html" coords="502,148,533,176,559,231,574,249,634,210,668,257,713,272,744,313,825,339,880,332,903,288,887,192,905,79,915,5,503,11,517,71,537,96,548,113,540,135" shape="poly">
-    <area target="_self" alt="Oceania" title="Oceania" href="Oceania.html" coords="838,341,883,335,901,299,936,306,935,325,965,382,975,455,915,471,849,458,781,450,785,372" shape="poly">
-    <area target="_self" alt="Europe" title="Europe" href="Europe.html" coords="505,162,393,159,293,52,283,22,321,3,397,4,444,54,500,33,510,71,529,97,544,117" shape="poly">
+    <area target="_self" alt="Americas" title="Americas" href="../../Americas.html" coords="95,11,0,50,1,94,39,120,72,244,167,351,211,504,272,506,276,419,320,320,239,244,193,170,280,118,286,53,278,19,310,4" shape="poly">
+    <area target="_self" alt="Africa" title="Africa" href="../../Africa.html" coords="359,180,364,276,445,304,470,425,563,421,609,323,603,252,563,251,548,221,528,178,500,167,465,162,423,161" shape="poly">
+    <area target="_self" alt="Asia" title="Asia" href="../../Asia.html" coords="502,148,533,176,559,231,574,249,634,210,668,257,713,272,744,313,825,339,880,332,903,288,887,192,905,79,915,5,503,11,517,71,537,96,548,113,540,135" shape="poly">
+    <area target="_self" alt="Oceania" title="Oceania" href="../../Oceania.html" coords="838,341,883,335,901,299,936,306,935,325,965,382,975,455,915,471,849,458,781,450,785,372" shape="poly">
+    <area target="_self" alt="Europe" title="Europe" href="../../Europe.html" coords="505,162,393,159,293,52,283,22,321,3,397,4,444,54,500,33,510,71,529,97,544,117" shape="poly">
 </map>
 </h1>
   </div>
@@ -575,16 +598,16 @@ main > *:last-child {
       <p>Decolonizing the Narrative | Celebrating Global Queer Resistance<br><br>
 
         <h2 id="history">History and Anthropology</h2>
-        <p>This is the bulk of your article content. Add paragraphs, images, or anything here.</p>
+        <p>Coming Soon</p>
         
         <h2 id="challenge">LGBTQ+ Challenges</h2>
-        <p>Continue with more detailed content here.</p>
+        <p>Coming Soon</p>
         
         <h2 id="resolve">Overcoming LGBTQ+ Challenges</h2>
-        <p>Wrap up your article with final thoughts.</p>
+        <p>Coming Soon</p>
 
         <h2 id="aid">Organizations Aiding the Community</h2>
-        <p>Wrap up your article with final thoughts.</p>
+        <p>Coming Soon</p>
 
         <h2 id="media">Media Representation</h2>
         <p><div class="row mt-4">
@@ -622,16 +645,26 @@ main > *:last-child {
      style="max-width:150px;"><br>
         <h5>Resources</h5>
         <ul class="list-unstyled">
-          <li><a href="https://example.com">External Resource 1</a></li>
-          <li><a href="https://example.com">External Resource 2</a></li>
-          <li><a href="https://example.com">External Resource 3</a></li>
+          <li><a href="https://www.arcenciel-international.be/world-resources/rainbow-afghanistan" target="_blank">Rainbow Afghanistan</a></li>
         </ul>
       </aside>
       
     </section>
     <!-- End Section -->
 
+<!-- IFRAME SAFETY INDEX-->
+<section id="news" class="py-5">
+  <div class="container">
+    <h2>⚠ LGBTQ2S+ Safety Index</h2>
 
+<div id="news-frame-wrapper" style="width:100%; max-width:800px;">
+  <iframe 
+    id="news-frame"
+    src="../../Safetyindex.html"
+    scrolling="yes"
+    style="width:100%; height:200px; border:1px solid #ccc; border-radius:10px; overflow:auto;">
+  </iframe>
+</div>
 
   <!-- SERVICES / FEATURES SECTION -->
   <!-- Each column represents a feature you offer. You can replace icons/text -->
